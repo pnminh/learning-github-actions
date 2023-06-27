@@ -1,0 +1,25 @@
+name: print_date
+on: [push]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print date on ubuntu-latest
+        run: date
+  job2:
+    runs-on: windows-latest
+    steps:
+        - name: print date on windows-latest
+          run: Get-Date
+  job3:
+    runs-on: macos-latest
+    steps:
+        - name: print date on macos-latest
+          run: date
+  job4:
+    runs-on: ubuntu-latest
+    needs: [job1,job2,job3]
+    steps:
+        - name: finalized job
+          run: echo "run after all job"
+        
