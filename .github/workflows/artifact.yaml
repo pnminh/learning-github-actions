@@ -4,16 +4,16 @@ jobs:
     test-upload-download-artifact:
         runs-on: ubuntu-latest
         env:
-          file_name: artifact.txt
+          file_name: artifact
         steps:
-            - name: checkout
-              uses: actions/checkout@v3
-            - name: upload_artifact
-              uses: actions/upload-artifact
+            - uses: actions/checkout@v3
+            - uses: actions/upload-artifact@v3
               with:
-                file_name: ${{env.file_name}}
-            - name: download_artifact
-              uses: actions/download-artifact
+                name: ${{env.file_name}}
+                path: ./${{env.file_name}}.txt
+            -  uses: actions/download-artifact
               with:
-                file_name: ${{env.file_name}}
-            
+                name: ${{env.file_name}}
+                path: ./downloaded_${{env.file_name}}.txt
+            - name: read downloaded file
+              run: cat ./downloaded_${{env.file_name}}.txt
