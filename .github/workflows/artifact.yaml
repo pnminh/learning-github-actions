@@ -7,7 +7,7 @@ jobs:
           file_name: artifact.txt
         steps:
             - name: checkout
-              uses: actions/checkout
+              uses: actions/checkout@v3
             - name: upload_artifact
               uses: actions/upload_artifact
               with:
