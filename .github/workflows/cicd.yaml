@@ -1,0 +1,17 @@
+name: cicd
+on: [push]
+jobs:
+    unit_test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - run: python hello.oy
+    build_and_upload_artifact:
+        needs: unit_test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/upload-artifact@v3
+              with:
+                name: my-artifact
+                path: .
