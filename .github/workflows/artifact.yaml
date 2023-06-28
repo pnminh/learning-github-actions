@@ -1,0 +1,19 @@
+name: test upload and download artifact
+on: [push]
+jobs:
+    test-upload-download-artifact:
+        runs-on: ubuntu-latest
+        env:
+          file_name: artifact.txt
+        steps:
+            - name: checkout
+              uses: actions/checkout
+            - name: upload_artifact
+              uses: actions/upload_artifact
+              with:
+                file_name: ${{env.file_name}}
+            - name: download_artifact
+              uses: actions/download_artifact
+              with:
+                file_name: ${{env.file_name}}
+            
