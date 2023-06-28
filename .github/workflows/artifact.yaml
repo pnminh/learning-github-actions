@@ -11,7 +11,7 @@ jobs:
               with:
                 name: ${{env.file_name}}
                 path: ./${{env.file_name}}.txt
-            - uses: actions/download-artifact
+            - uses: actions/download-artifact@v3
               with:
                 name: ${{env.file_name}}
                 path: ./downloaded_${{env.file_name}}.txt
