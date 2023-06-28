@@ -14,6 +14,6 @@ jobs:
             - uses: actions/download-artifact@v3
               with:
                 name: ${{env.file_name}}
-                path: ./downloaded_${{env.file_name}}.txt
+                path: ./downloaded
             - name: read downloaded file
-              run: cat ./downloaded_${{env.file_name}}.txt
+              run: cat ./downloaded/${{env.file_name}}.txt
